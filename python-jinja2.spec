@@ -1,10 +1,10 @@
-%bcond_with	doc
+%bcond_without	doc
 %define module jinja2
 Summary:	Template engine
 Summary(pl.UTF-8):	Silnik szablonów
 Name:		python-%{module}
 Version:	2.3.1
-Release:	5.1
+Release:	6
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/J/Jinja2/Jinja2-%{version}.tar.gz
