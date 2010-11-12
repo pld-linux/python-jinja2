@@ -12,15 +12,16 @@ Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/J/Jinja2/Jinja2-%{version}.tar.gz
 # Source0-md5:	83b20c1eeb31f49d8e6392efae91b7d5
 URL:		http://jinja.pocoo.org/
+BuildRequires:	rpm-pythonprov
 %if %{with python2}
 BuildRequires:	python-devel
 BuildRequires:	python-setuptools
-BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
 %endif
 %if %{with python3}
 BuildRequires:	python3-devel
 BuildRequires:	python3-distribute
+BuildRequires:	python3-modules
 %pyrequires_eq	python3-modules
 %endif
 %if %{with doc}
