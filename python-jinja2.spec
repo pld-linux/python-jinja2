@@ -6,7 +6,7 @@ Summary:	Template engine
 Summary(pl.UTF-8):	Silnik szablonów
 Name:		python-%{module}
 Version:	2.5.5
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/J/Jinja2/Jinja2-%{version}.tar.gz
@@ -22,7 +22,6 @@ BuildRequires:	python-setuptools
 BuildRequires:	python3-devel
 BuildRequires:	python3-distribute
 BuildRequires:	python3-modules
-%pyrequires_eq	python3-modules
 %endif
 %if %{with doc}
 BuildRequires:	sphinx-pdg
@@ -44,6 +43,9 @@ ograniczonym środowisku.
 Summary:	Template engine
 Summary(pl.UTF-8):      Silnik szablonów
 Group:          Development/Languages/Python
+%if %{with python3}
+%pyrequires_eq	python3-modules
+%endif
 
 %description
 A small but fast and easy to use stand-alone template engine written
