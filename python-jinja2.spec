@@ -47,7 +47,7 @@ Group:          Development/Languages/Python
 %pyrequires_eq	python3-modules
 %endif
 
-%description
+%description -n python3-%{module}
 A small but fast and easy to use stand-alone template engine written
 in pure python. Provides a Django inspired non-XML syntax but supports
 inline expressions and an optional sandboxed environment.
