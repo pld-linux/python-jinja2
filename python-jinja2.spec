@@ -6,7 +6,7 @@ Summary:	Template engine
 Summary(pl.UTF-8):	Silnik szablonów
 Name:		python-%{module}
 Version:	2.5.5
-Release:	2
+Release:	3
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/J/Jinja2/Jinja2-%{version}.tar.gz
@@ -101,8 +101,6 @@ rm -rf $RPM_BUILD_ROOT
 	install \
 	--root=$RPM_BUILD_ROOT \
 	--optimize=2
-
-%py3_postclean
 %endif
 
 %clean
