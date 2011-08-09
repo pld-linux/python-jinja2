@@ -5,12 +5,12 @@
 Summary:	Template engine
 Summary(pl.UTF-8):	Silnik szablonów
 Name:		python-%{module}
-Version:	2.5.5
-Release:	3
+Version:	2.6
+Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/J/Jinja2/Jinja2-%{version}.tar.gz
-# Source0-md5:	83b20c1eeb31f49d8e6392efae91b7d5
+# Source0-md5:	1c49a8825c993bfdcf55bb36897d28a2
 URL:		http://jinja.pocoo.org/
 BuildRequires:	rpm-pythonprov
 %if %{with python2}
