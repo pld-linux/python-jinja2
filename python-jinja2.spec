@@ -1,9 +1,12 @@
-%bcond_without	doc
-%bcond_without	python2
-%bcond_without	python3
+#
+# Conditional build:
+%bcond_without	doc	# API documentation
+%bcond_without	python2	# Python 2.x modules
+%bcond_without	python3	# Python 3.x modules
+#
 %define module jinja2
-Summary:	Template engine
-Summary(pl.UTF-8):	Silnik szablonów
+Summary:	Jinja2 Template engine for Python 2.x
+Summary(pl.UTF-8):	Silnik szablonów Jinja2 dla Pythona 2.x
 Name:		python-%{module}
 Version:	2.6
 Release:	1
@@ -16,7 +19,6 @@ BuildRequires:	rpm-pythonprov
 %if %{with python2}
 BuildRequires:	python-devel
 BuildRequires:	python-setuptools
-%pyrequires_eq	python-modules
 %endif
 %if %{with python3}
 BuildRequires:	python3-devel
@@ -26,22 +28,25 @@ BuildRequires:	python3-modules
 %if %{with doc}
 BuildRequires:	sphinx-pdg
 %endif
+%if %{with python2}
+%pyrequires_eq	python-modules
+%endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 A small but fast and easy to use stand-alone template engine written
-in pure python. Provides a Django inspired non-XML syntax but supports
+in pure Python. Provides a Django inspired non-XML syntax but supports
 inline expressions and an optional sandboxed environment.
 
 %description -l pl.UTF-8
-Mały ale szybkie i łatwy w użyciu samodzielny silnik szablonów
-napisany w czystym Pythonie. Dostarcza podobne do Django, o odmiennej
-od XMLa składni i kompliowane do kodu Pythona szablony w opcjonalnie
+Mały ale szybki i łatwy w użyciu samodzielny silnik szablonów napisany
+w czystym Pythonie. Udostępnia podobne do Django, o odmiennej od XML-a
+składni i kompilowane do kodu Pythona szablony w opcjonalnie
 ograniczonym środowisku.
 
 %package -n python3-%{module}
-Summary:	Template engine
-Summary(pl.UTF-8):      Silnik szablonów
+Summary:	Template engine Jinja2 for Python 3.x
+Summary(pl.UTF-8):      Silnik szablonów Jinja2 dla Pythona 3.x
 Group:          Development/Languages/Python
 %if %{with python3}
 %pyrequires_eq	python3-modules
@@ -49,21 +54,25 @@ Group:          Development/Languages/Python
 
 %description -n python3-%{module}
 A small but fast and easy to use stand-alone template engine written
-in pure python. Provides a Django inspired non-XML syntax but supports
+in pure Python. Provides a Django inspired non-XML syntax but supports
 inline expressions and an optional sandboxed environment.
 
 %description -n python3-%{module} -l pl.UTF-8
-Mały ale szybkie i łatwy w użyciu samodzielny silnik szablonów
-napisany w czystym Pythonie. Dostarcza podobne do Django, o odmiennej
-od XMLa składni i kompliowane do kodu Pythona szablony w opcjonalnie
+Mały ale szybki i łatwy w użyciu samodzielny silnik szablonów napisany
+w czystym Pythonie. Udostępnia podobne do Django, o odmiennej od XML-a
+składni i kompilowane do kodu Pythona szablony w opcjonalnie
 ograniczonym środowisku.
 
 %package apidoc
 Summary:	Jinja2 template engine API documentation
+Summary(pl.UTF-8):	Dokumentacja API silnika szablonów Jinja2
 Group:          Development/Languages/Python
 
 %description apidoc
-API documentation for Jinja2 template engine
+API documentation for Jinja2 template engine.
+
+%description apidoc -l pl.UTF-8
+Dokumentacja API silnika szablonów Jinja2.
 
 %prep
 %setup -q -n Jinja2-%{version}
@@ -109,17 +118,17 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %files
 %defattr(644,root,root,755)
-%doc PKG-INFO AUTHORS CHANGES
+%doc AUTHORS CHANGES LICENSE PKG-INFO
 %{py_sitescriptdir}/%{module}
-%{py_sitescriptdir}/*Jinja*.egg*
+%{py_sitescriptdir}/Jinja2-%{version}-py*.egg-info
 %endif
 
 %if %{with python3}
 %files -n python3-%{module}
 %defattr(644,root,root,755)
-%doc PKG-INFO AUTHORS CHANGES
+%doc AUTHORS CHANGES LICENSE PKG-INFO
 %{py3_sitescriptdir}/%{module}
-%{py3_sitescriptdir}/*Jinja*.egg*
+%{py3_sitescriptdir}/Jinja2-%{version}-py*.egg-info
 %endif
 
 %if %{with doc}
