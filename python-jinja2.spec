@@ -3,13 +3,13 @@
 %bcond_without	doc	# API documentation
 %bcond_without	python2	# Python 2.x modules
 %bcond_without	python3	# Python 3.x modules
-#
-%define module jinja2
+
+%define		module	jinja2
 Summary:	Jinja2 Template engine for Python 2.x
 Summary(pl.UTF-8):	Silnik szablonów Jinja2 dla Pythona 2.x
 Name:		python-%{module}
 Version:	2.6
-Release:	2
+Release:	3
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/J/Jinja2/Jinja2-%{version}.tar.gz
@@ -28,9 +28,8 @@ BuildRequires:	python3-modules
 %if %{with doc}
 BuildRequires:	sphinx-pdg
 %endif
-%if %{with python2}
-%pyrequires_eq	python-modules
-%endif
+Requires:	python-modules
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -46,11 +45,9 @@ ograniczonym środowisku.
 
 %package -n python3-%{module}
 Summary:	Template engine Jinja2 for Python 3.x
-Summary(pl.UTF-8):      Silnik szablonów Jinja2 dla Pythona 3.x
-Group:          Development/Languages/Python
-%if %{with python3}
-%pyrequires_eq	python3-modules
-%endif
+Summary(pl.UTF-8):	Silnik szablonów Jinja2 dla Pythona 3.x
+Group:		Development/Languages/Python
+Requires:	python3-modules
 
 %description -n python3-%{module}
 A small but fast and easy to use stand-alone template engine written
@@ -66,7 +63,7 @@ ograniczonym środowisku.
 %package apidoc
 Summary:	Jinja2 template engine API documentation
 Summary(pl.UTF-8):	Dokumentacja API silnika szablonów Jinja2
-Group:          Development/Languages/Python
+Group:		Development/Languages/Python
 
 %description apidoc
 API documentation for Jinja2 template engine.
@@ -79,10 +76,10 @@ Dokumentacja API silnika szablonów Jinja2.
 
 %build
 %if %{with python2}
-%{__python} setup.py build --build-base py2
+%{__python} setup.py build --build-base build-2
 %endif
 %if %{with python3}
-%{__python3} setup.py build --build-base py3
+%{__python3} setup.py build --build-base build-3
 %endif
 
 %if %{with doc}
@@ -96,7 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %if %{with python2}
 %{__python} setup.py \
-	build --build-base py2 \
+	build --build-base build-2 \
 	install \
 	--root=$RPM_BUILD_ROOT \
 	--optimize=2
@@ -106,7 +103,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %if %{with python3}
 %{__python3} setup.py \
-	build --build-base py3 \
+	build --build-base build-3 \
 	install \
 	--root=$RPM_BUILD_ROOT \
 	--optimize=2
@@ -118,7 +115,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS CHANGES LICENSE PKG-INFO
+%doc AUTHORS CHANGES LICENSE
 %{py_sitescriptdir}/%{module}
 %{py_sitescriptdir}/Jinja2-%{version}-py*.egg-info
 %endif
@@ -126,7 +123,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python3}
 %files -n python3-%{module}
 %defattr(644,root,root,755)
-%doc AUTHORS CHANGES LICENSE PKG-INFO
+%doc AUTHORS CHANGES LICENSE
 %{py3_sitescriptdir}/%{module}
 %{py3_sitescriptdir}/Jinja2-%{version}-py*.egg-info
 %endif
@@ -134,5 +131,5 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with doc}
 %files apidoc
 %defattr(644,root,root,755)
-%doc docs/_build/html
+%doc docs/_build/html/*
 %endif
