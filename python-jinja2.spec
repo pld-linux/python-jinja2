@@ -28,6 +28,7 @@ BuildRequires:	python3-modules
 %if %{with doc}
 BuildRequires:	sphinx-pdg
 %endif
+Requires:	python-markupsafe
 Requires:	python-modules
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -47,6 +48,7 @@ ograniczonym środowisku.
 Summary:	Template engine Jinja2 for Python 3.x
 Summary(pl.UTF-8):	Silnik szablonów Jinja2 dla Pythona 3.x
 Group:		Development/Languages/Python
+Requires:	python3-markupsafe
 Requires:	python3-modules
 
 %description -n python3-%{module}
