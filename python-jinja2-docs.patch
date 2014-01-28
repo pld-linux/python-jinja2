@@ -1,0 +1,11 @@
+--- Jinja2-2.7.2/docs/jinjaext.py.orig	2014-01-10 11:14:43.000000000 +0100
++++ Jinja2-2.7.2/docs/jinjaext.py	2014-01-28 16:34:30.621212862 +0100
+@@ -23,7 +23,7 @@
+ from pygments.token import Keyword, Name, Comment, String, Error, \
+      Number, Operator, Generic
+ from jinja2 import Environment, FileSystemLoader
+-from jinja2.utils import next
++from jinja2._compat import next
+ 
+ 
+ def parse_rst(state, content_offset, doc):
