@@ -23,7 +23,7 @@ BuildRequires:	python-setuptools
 %endif
 %if %{with python3}
 BuildRequires:	python3-devel
-BuildRequires:	python3-distribute
+BuildRequires:	python3-setuptools
 BuildRequires:	python3-modules
 %endif
 %if %{with doc}
