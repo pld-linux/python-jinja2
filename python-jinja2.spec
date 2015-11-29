@@ -16,6 +16,7 @@ Source0:	https://pypi.python.org/packages/source/J/Jinja2/Jinja2-%{version}.tar.
 # Source0-md5:	b9dffd2f3b43d673802fe857c8445b1a
 Patch0:		%{name}-docs.patch
 URL:		http://jinja.pocoo.org/
+BuildRequires:	rpmbuild(macros) >= 1.710
 BuildRequires:	rpm-pythonprov
 %if %{with python2}
 BuildRequires:	python-devel
