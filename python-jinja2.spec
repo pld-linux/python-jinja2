@@ -31,6 +31,7 @@ BuildRequires:	sphinx-pdg
 %endif
 Requires:	python-markupsafe
 Requires:	python-modules >= 1:2.6
+Obsoletes:	python-Jinja2
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
