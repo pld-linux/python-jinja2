@@ -8,30 +8,29 @@
 Summary:	Jinja2 Template engine for Python 2.x
 Summary(pl.UTF-8):	Silnik szablonów Jinja2 dla Pythona 2.x
 Name:		python-%{module}
-Version:	2.7.3
-Release:	5
+Version:	2.8
+Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	https://pypi.python.org/packages/source/J/Jinja2/Jinja2-%{version}.tar.gz
-# Source0-md5:	b9dffd2f3b43d673802fe857c8445b1a
-Patch0:		%{name}-docs.patch
+# Source0-md5:	edb51693fe22c53cee5403775c71a99e
 URL:		http://jinja.pocoo.org/
 BuildRequires:	rpmbuild(macros) >= 1.710
 BuildRequires:	rpm-pythonprov
 %if %{with python2}
-BuildRequires:	python-devel
+BuildRequires:	python-devel >= 1:2.6
 BuildRequires:	python-setuptools
 %endif
 %if %{with python3}
-BuildRequires:	python3-devel
+BuildRequires:	python3-devel >= 1:3.3
+BuildRequires:	python3-modules >= 1:3.3
 BuildRequires:	python3-setuptools
-BuildRequires:	python3-modules
 %endif
 %if %{with doc}
 BuildRequires:	sphinx-pdg
 %endif
 Requires:	python-markupsafe
-Requires:	python-modules
+Requires:	python-modules >= 1:2.6
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -51,7 +50,7 @@ Summary:	Template engine Jinja2 for Python 3.x
 Summary(pl.UTF-8):	Silnik szablonów Jinja2 dla Pythona 3.x
 Group:		Development/Languages/Python
 Requires:	python3-markupsafe
-Requires:	python3-modules
+Requires:	python3-modules >= 1:3.3
 
 %description -n python3-%{module}
 A small but fast and easy to use stand-alone template engine written
@@ -77,7 +76,6 @@ Dokumentacja API silnika szablonów Jinja2.
 
 %prep
 %setup -q -n Jinja2-%{version}
-%patch0 -p1
 
 %build
 %if %{with python2}
@@ -90,7 +88,7 @@ Dokumentacja API silnika szablonów Jinja2.
 %if %{with doc}
 cd docs
 %{__make} -j1 html
-rm -rf _build/html/_sources
+%{__rm} -r _build/html/_sources
 %endif
 
 %install
