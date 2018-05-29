@@ -8,13 +8,13 @@
 Summary:	Jinja2 Template engine for Python 2.x
 Summary(pl.UTF-8):	Silnik szablonów Jinja2 dla Pythona 2.x
 Name:		python-%{module}
-Version:	2.9.5
+Version:	2.10
 Release:	1
 License:	BSD
 Group:		Development/Languages/Python
-#Source0Download: https://pypi.python.org/simple/Jinja2
+#Source0Download: https://pypi.org/simple/Jinja2
 Source0:	https://files.pythonhosted.org/packages/source/J/Jinja2/Jinja2-%{version}.tar.gz
-# Source0-md5:	9e55f0db6620dd99a1b366183a94270d
+# Source0-md5:	61ef1117f945486472850819b8d1eb3d
 URL:		http://jinja.pocoo.org/
 BuildRequires:	rpmbuild(macros) >= 1.714
 BuildRequires:	rpm-pythonprov
@@ -88,9 +88,9 @@ Dokumentacja API silnika szablonów Jinja2.
 %endif
 
 %if %{with doc}
-cd docs
-%{__make} -j1 html
-%{__rm} -r _build/html/_sources
+PYTHONPATH=$(pwd) \
+%{__make} -C docs -j1 html \
+	SPHINXBUILD=sphinx-build
 %endif
 
 %install
@@ -112,7 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS CHANGES LICENSE
+%doc AUTHORS CHANGES.rst LICENSE README.rst
 %{py_sitescriptdir}/%{module}
 %{py_sitescriptdir}/Jinja2-%{version}-py*.egg-info
 %endif
@@ -120,7 +120,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python3}
 %files -n python3-%{module}
 %defattr(644,root,root,755)
-%doc AUTHORS CHANGES LICENSE
+%doc AUTHORS CHANGES.rst LICENSE README.rst
 %{py3_sitescriptdir}/%{module}
 %{py3_sitescriptdir}/Jinja2-%{version}-py*.egg-info
 %endif
@@ -128,5 +128,5 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with doc}
 %files apidoc
 %defattr(644,root,root,755)
-%doc docs/_build/html/*
+%doc docs/_build/html/{_static,*.html,*.js}
 %endif
