@@ -37,7 +37,8 @@ BuildRequires:	python3-pytest
 %endif
 %endif
 %if %{with doc}
-BuildRequires:	sphinx-pdg
+BuildRequires:	python3-sphinxcontrib-log-cabinet
+BuildRequires:	sphinx-pdg-3
 %endif
 Requires:	python-modules >= 1:2.7
 Obsoletes:	python-Jinja2
@@ -106,7 +107,7 @@ Dokumentacja API silnika szablonów Jinja2.
 %if %{with doc}
 PYTHONPATH=$(pwd) \
 %{__make} -C docs -j1 html \
-	SPHINXBUILD=sphinx-build
+	SPHINXBUILD=sphinx-build-3
 %endif
 
 %install
