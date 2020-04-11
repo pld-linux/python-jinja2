@@ -9,13 +9,13 @@
 Summary:	Jinja2 Template engine for Python 2.x
 Summary(pl.UTF-8):	Silnik szablonów Jinja2 dla Pythona 2.x
 Name:		python-%{module}
-Version:	2.10.3
-Release:	1
+Version:	2.11.1
+Release:	0.1
 License:	BSD
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/Jinja2
 Source0:	https://files.pythonhosted.org/packages/source/J/Jinja2/Jinja2-%{version}.tar.gz
-# Source0-md5:	7883559bc5cc3e2781d94b4be61cfdcd
+# Source0-md5:	5d88c7e77aa63fc852a04f65dbfe5594
 URL:		http://jinja.pocoo.org/
 BuildRequires:	rpmbuild(macros) >= 1.714
 BuildRequires:	rpm-pythonprov
@@ -37,8 +37,10 @@ BuildRequires:	python3-pytest
 %endif
 %endif
 %if %{with doc}
-BuildRequires:	python3-sphinxcontrib-log-cabinet
-BuildRequires:	sphinx-pdg-3
+BuildRequires:	python3-pallets-sphinx-themes >= 1.2.0
+BuildRequires:	python3-sphinxcontrib-log-cabinet >= 1.0.1
+BuildRequires:	python3-sphinx_issues >= 1.2.0
+BuildRequires:	sphinx-pdg-3 >= 2.1.2
 %endif
 Requires:	python-modules >= 1:2.7
 Obsoletes:	python-Jinja2
@@ -92,6 +94,7 @@ Dokumentacja API silnika szablonów Jinja2.
 %py_build
 
 %if %{with tests}
+PYTHONPATH=$(pwd)/src \
 %{__python} -m pytest tests
 %endif
 %endif
@@ -100,6 +103,7 @@ Dokumentacja API silnika szablonów Jinja2.
 %py3_build
 
 %if %{with tests}
+PYTHONPATH=$(pwd)/src \
 %{__python3} -m pytest tests
 %endif
 %endif
