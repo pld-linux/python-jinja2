@@ -9,13 +9,13 @@
 Summary:	Jinja2 Template engine for Python 2.x
 Summary(pl.UTF-8):	Silnik szablonów Jinja2 dla Pythona 2.x
 Name:		python-%{module}
-Version:	2.11.1
-Release:	0.1
+Version:	2.11.2
+Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/Jinja2
 Source0:	https://files.pythonhosted.org/packages/source/J/Jinja2/Jinja2-%{version}.tar.gz
-# Source0-md5:	5d88c7e77aa63fc852a04f65dbfe5594
+# Source0-md5:	0362203b22547abca06ed1082bc1e7b4
 URL:		http://jinja.pocoo.org/
 BuildRequires:	rpmbuild(macros) >= 1.714
 BuildRequires:	rpm-pythonprov
