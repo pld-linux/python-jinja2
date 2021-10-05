@@ -3,7 +3,7 @@
 %bcond_without	doc	# API documentation
 %bcond_without	tests	# unit tests
 %bcond_without	python2	# Python 2.x modules
-%bcond_without	python3	# Python 3.x modules
+%bcond_with	python3	# Python 3.x modules, python3 is built from python3-jinja2.spec
 
 %define		module	jinja2
 Summary:	Jinja2 Template engine for Python 2.x
