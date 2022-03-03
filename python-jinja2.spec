@@ -16,7 +16,7 @@ Group:		Development/Languages/Python
 #Source0Download: https://pypi.org/simple/Jinja2
 Source0:	https://files.pythonhosted.org/packages/source/J/Jinja2/Jinja2-%{version}.tar.gz
 # Source0-md5:	231dc00d34afb2672c497713fa9cdaaa
-URL:		http://jinja.pocoo.org/
+URL:		https://jinja.palletsprojects.com/
 BuildRequires:	rpmbuild(macros) >= 1.714
 BuildRequires:	rpm-pythonprov
 %if %{with python2}
@@ -43,7 +43,7 @@ BuildRequires:	python3-sphinx_issues >= 1.2.0
 BuildRequires:	sphinx-pdg-3 >= 2.1.2
 %endif
 Requires:	python-modules >= 1:2.7
-Obsoletes:	python-Jinja2
+Obsoletes:	python-Jinja2 < 2.7
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
